@@ -8,7 +8,7 @@ import { ExamDTO } from '../shared/models/exam.model';
 })
 export class ExamService {
 
-  private apiUrl = 'http://localhost:8080/api/exams';
+  private apiUrl = 'https://exambackend-production.up.railway.app/api/exams';
 
   constructor(private http: HttpClient) { }
 
