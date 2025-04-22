@@ -18,7 +18,7 @@ export interface Student {
   providedIn: 'root'
 })
 export class StudentService {
-  private apiBaseUrl="http://localhost:8080/api";
+  private apiBaseUrl="https://exambackend-production.up.railway.app/api";
   private apiUrl = `${this.apiBaseUrl}/students`;
 
   constructor(private http: HttpClient) {}
