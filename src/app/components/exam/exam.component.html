@@ -1,0 +1,40 @@
+<div class="exam-container">
+  <div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%;">
+    <button (click)="goToDashboard()" style="position: absolute; left: 0; padding: 8px 16px; font-size: 16px; cursor: pointer;">
+      Back
+  </button>
+  </div>
+    <h2>Exam Management</h2>
+    <div class="form-container">
+      <h3>Create New Exam</h3>
+      <form (ngSubmit)="saveExam()">
+        <label for="examDate">Exam Date:</label>
+        <input type="date" id="examDate" [(ngModel)]="exam.examDate" name="examDate" required />
+  
+        <label for="semester">Semester:</label>
+        <input type="text" id="semester" [(ngModel)]="exam.semester" name="semester" required />
+  
+        <label for="branch">Branch:</label>
+        <input type="text" id="branch" [(ngModel)]="exam.branch" name="branch" required />
+  
+        <label for="subjectCode">Subject Code:</label>
+        <input type="text" id="subjectCode" [(ngModel)]="exam.subjectCode" name="subjectCode" required />
+  
+        <label for="year">Year:</label>
+        <input type="text" id="year" [(ngModel)]="exam.year" name="year" required />
+  
+        <button type="submit">Save Exam</button>
+      </form>
+    </div>
+  
+    <div class="exam-list">
+      <h3>Existing Exams</h3>
+      <ul>
+        <li *ngFor="let exam of exams">
+          Exam Date: {{ exam.examDate }}, Semester: {{ exam.semester }}, Branch: {{ exam.branch }}
+          <button (click)="deleteExam(exam.id)">Delete</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  

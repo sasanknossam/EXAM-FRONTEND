@@ -1,0 +1,43 @@
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="container">
+    <a class="brand" href="#">ADMIN DASHBOARD</a>
+    <ul class="nav-links">
+      <li><a href="/room">Room Management</a></li>
+      <li><a href="/student">Student Management</a></li>
+      <li><a href="/exam">Exam Management</a></li>
+      <li><a href="/seating-arrangement">Seating Arrangement</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Export Seating Section -->
+<div class="export-section">
+  <h2>Export Seating Arrangements</h2>
+  <form (submit)="onExport($event)">
+    
+    <!-- Room Selection -->
+    <div class="form-group">
+      <label for="roomSelect">Select Room:</label>
+      <select id="roomSelect" class="form-select" [(ngModel)]="roomId" name="roomId" required>
+        <option [ngValue]="null" disabled>Select a room</option>
+        <option *ngFor="let room of rooms" [ngValue]="room.id">
+          {{ room.roomNumber }}
+        </option>
+      </select>
+    </div>
+
+    <!-- Exam Selection -->
+    <div class="form-group">
+      <label for="examSelect">Select Exam:</label>
+      <select id="examSelect" class="form-select" [(ngModel)]="examId" name="examId" required>
+        <option [ngValue]="null" disabled>Select an exam</option>
+        <option *ngFor="let exam of exams" [ngValue]="exam.id">
+          {{ exam.subjectCode }} - {{ exam.examDate }}
+        </option>
+      </select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Export to Excel</button>
+  </form>
+</div>

@@ -1,0 +1,75 @@
+<div class="container mt-4">
+  <div class="exam-container">
+    <div style="display: flex; align-items: center; justify-content: center; position: relative; width: 100%;">
+      <button (click)="goToDashboard()" style="position: absolute; left: 0; padding: 8px 16px; font-size: 16px; cursor: pointer;">
+        Back
+    </button>
+    </div>
+  <h2 class="mb-4">Seating Arrangement</h2>
+
+  <!-- Select Exam Date -->
+  <div class="mb-3">
+    <label>Select Exam Date:</label>
+    <select class="form-control" [(ngModel)]="selectedDate" (change)="filterExamsByDate()">
+      <option *ngFor="let date of getUniqueExamDates()" [value]="date">
+        {{ date }}
+      </option>
+      
+    </select>
+    
+  </div>
+
+  <!-- Select Exam on That Date -->
+  <div class="mb-3" *ngIf="examsOnDate.length > 0">
+    <label>Select Exam:</label>
+    <select class="form-control" [(ngModel)]="selectedExamId">
+      <option *ngFor="let exam of examsOnDate" [value]="exam.id">
+        {{ exam.subjectCode }} - {{ exam.examDate | date: 'yyyy-MM-dd' }}
+      </option>
+      
+ 
+    </select>
+  </div>
+  
+
+  <!-- Room Dropdown -->
+  <div class="mb-3">
+    <label>Select Room:</label>
+    <select class="form-control" [(ngModel)]="selectedRoomId">
+      <option *ngFor="let room of rooms" [value]="room.id">{{ room.roomNumber }} </option>
+    </select>
+  </div>
+
+  <!-- Assign Button -->
+  <div class="mb-3">
+    <button class="btn btn-primary" (click)="autoAssignSeats()" [disabled]="!selectedExamId || !selectedRoomId">
+      Auto Assign Seats
+    </button>
+  </div>
+
+  <!-- Seating Arrangement Preview -->
+  <div *ngIf="seatingArrangements.length > 0">
+   <!-- seating-arrangement.component.html -->
+   <table>
+    <thead>
+    <tr>
+      <!-- <th>Room Number</th> -->
+      <th>Seat Number</th>
+      <th>Student PIN</th>
+      <!-- <th>Branch</th> -->
+    </tr>
+  </thead>
+    <tbody>
+    <tr *ngFor="let seat of seatingArrangements; let i = index">
+      <!-- <td>{{ seat.roomId }}</td> -->
+      <td>{{calculateSeatNumber(i)}}</td>  <!-- Dynamically calculated seat number -->
+      <!-- <td>{{ seat.studentid }}</td> Assuming you have a studentId, you can replace it with the actual student data -->
+      <td>{{  seat.pin }}</td>  
+    </tr>
+  </tbody>
+</table>
+
+    <!-- Export Button only visible after preview -->
+    <button  type="submit" class="btn btn-success mt-3" (click)="exportToExcel()">Export to Excel</button>
+  </div>
+</div>

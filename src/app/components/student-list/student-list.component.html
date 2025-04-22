@@ -1,0 +1,22 @@
+<div>
+    <h2>Student List</h2>
+    <table>
+      <tr>
+        <th>Name</th>
+        <th>PIN</th>
+        <th>Branch</th>
+        <th>Semester</th>
+        <th>Actions</th>
+      </tr>
+      <tr *ngFor="let student of students">
+        <td>{{ student.name }}</td>
+        <td>{{ student.pin }}</td>
+        <td>{{ student.branch }}</td>
+        <td>{{ student.semester }}</td>
+        <td>
+          <!-- Add buttons for edit, delete, etc. -->
+        </td>
+      </tr>
+    </table>
+  </div>
+  

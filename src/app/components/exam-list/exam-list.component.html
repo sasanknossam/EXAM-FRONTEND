@@ -1,0 +1,31 @@
+<div class="exam-list-container">
+  <h2>Exam List</h2>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Exam ID</th>
+        <th>Exam Date</th>
+        <th>Semester</th>
+        <th>Branch</th>
+        <th>Subject Code</th>
+        <th>Year</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let exam of exams">
+        <td>{{ exam.id }}</td>
+        <td>{{ exam.examDate | date: 'dd/MM/yyyy' }}</td>
+        <td>{{ exam.semester }}</td>
+        <td>{{ exam.branch }}</td>
+        <td>{{ exam.subjectCode }}</td>
+        <td>{{ exam.year }}</td>
+        <td>
+          <button class="edit-btn" (click)="editExam(exam.id)">Edit</button>
+          <button class="delete-btn" (click)="deleteExam(exam.id)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

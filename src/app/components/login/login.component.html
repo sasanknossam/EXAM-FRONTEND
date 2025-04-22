@@ -1,0 +1,60 @@
+<div class="login-container">
+  <h2>Login</h2>
+
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Role Selection -->
+    <label for="role">Role</label>
+    <select
+      formControlName="role"
+      id="role"
+      class="form-control"
+      (change)="onRoleChange()"
+    >
+      <option value="">Select Role</option>
+      <option value="Admin">Admin</option>
+      <!-- <option value="Student">Student</option> -->
+    </select>
+
+    <!-- Username -->
+    <label for="username">Username</label>
+    <input
+      type="text"
+      id="username"
+      formControlName="username"
+      class="form-control"
+      placeholder="Enter your username"
+    />
+    <small *ngIf="loginForm.get('username')?.errors?.['required']">
+      Username is required.
+    </small>
+
+    <!-- Password -->
+    <label for="password">Password</label>
+    <div class="password-container">
+      <input
+        [type]="passwordVisible ? 'text' : 'password'"
+        id="password"
+        formControlName="password"
+        class="form-control"
+        placeholder="Enter your password"
+      />
+      <button type="button" (click)="togglePasswordVisibility()">👁️</button>
+    </div>
+    <small *ngIf="loginForm.get('password')?.errors?.['required']">
+      Password is required.
+    </small>
+    <small *ngIf="loginForm.get('password')?.errors?.['pattern']">
+      Password format is incorrect. For students, use YYYY-MM-DD.
+    </small>
+
+    <!-- Submit Button -->
+    <button type="submit" class="btn btn-primary" [disabled]="!loginForm.valid">
+      Login
+    </button>
+  </form>
+
+  <!-- Error Message -->
+  <div *ngIf="errorMessage" class="error-message">
+    {{ errorMessage }}
+  </div>
+</div>

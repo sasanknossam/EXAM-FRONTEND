@@ -1,0 +1,94 @@
+<div class="register-container">
+    <h2>Student Registration</h2>
+  
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+      <!-- Student PIN -->
+      <mat-form-field appearance="fill">
+        <mat-label>PIN</mat-label>
+        <input matInput formControlName="pin" placeholder="e.g., 22022-CM-045" />
+        <mat-error *ngIf="registerForm.get('pin')?.hasError('required')">
+          PIN is required.
+        </mat-error>
+        <mat-error *ngIf="registerForm.get('pin')?.hasError('pattern')">
+          Invalid PIN format. Correct format: 22022-CM-045 22 is year022 is college code
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Student Name -->
+      <mat-form-field appearance="fill">
+        <mat-label>Name</mat-label>
+        <input matInput formControlName="name" placeholder="Enter your full name" />
+        <mat-error *ngIf="registerForm.get('name')?.hasError('required')">
+          Name is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Branch -->
+      <mat-form-field appearance="fill">
+        <mat-label>Branch</mat-label>
+        <mat-select formControlName="branch">
+          <mat-option *ngFor="let branch of branches" [value]="branch">{{ branch }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.get('branch')?.hasError('required')">
+          Branch is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Semester -->
+      <mat-form-field appearance="fill">
+        <mat-label>Semester</mat-label>
+        <mat-select formControlName="semester">
+          <mat-option *ngFor="let semester of semesters" [value]="semester">{{ semester }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.get('semester')?.hasError('required')">
+          Semester is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- College Code -->
+      <mat-form-field appearance="fill">
+        <mat-label>College Code</mat-label>
+        <input matInput formControlName="collegeCode" placeholder="Enter college code" />
+        <mat-error *ngIf="registerForm.get('collegeCode')?.hasError('required')">
+          College Code is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Year -->
+      <mat-form-field appearance="fill">
+        <mat-label>Year</mat-label>
+        <mat-select formControlName="year">
+          <mat-option *ngFor="let year of years" [value]="year">{{ year }}</mat-option>
+        </mat-select>
+        <mat-error *ngIf="registerForm.get('year')?.hasError('required')">
+          Year is required.
+        </mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+        <mat-label>Date of Birth</mat-label>
+        <input matInput [matDatepicker]="picker" formControlName="dob" placeholder="Select your DOB" />
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        <mat-error *ngIf="registerForm.get('dob')?.hasError('required')">
+          Date of Birth is required.
+        </mat-error>
+      </mat-form-field>
+  
+      <!-- Error Message -->
+      <div *ngIf="errorMessage" class="error-message">
+        {{ errorMessage }}
+      </div>
+      
+      <div class="button-container">
+        <button mat-raised-button color="primary" type="submit" [disabled]="registerForm.invalid">
+          Register
+        </button>
+        <button mat-raised-button color="primary" type="button" (click)="navigateToLogin()">
+          Login
+        </button>
+      </div>
+      
+    </form>
+  </div>
+  
