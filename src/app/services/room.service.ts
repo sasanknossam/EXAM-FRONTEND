@@ -7,7 +7,7 @@ import { Room } from '../shared/models/room.model';
   providedIn: 'root'
 })
 export class RoomService {
-  private apiUrl = 'http://localhost:8080/api/rooms';
+  private apiUrl = 'https://exambackend-production.up.railway.app/api/rooms';
 
   constructor(private http: HttpClient) { }
 
