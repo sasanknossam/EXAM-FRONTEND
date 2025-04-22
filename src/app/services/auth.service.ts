@@ -9,7 +9,7 @@ export class AuthService {
 
  
 
-  private baseUrl = 'http://localhost:8080/api/auth/login';
+  private baseUrl = 'https://exambackend-production.up.railway.app/api/auth/login';
 
   constructor(private http: HttpClient) {}
 
