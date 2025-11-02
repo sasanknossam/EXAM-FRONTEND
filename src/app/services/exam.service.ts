@@ -8,7 +8,7 @@ import { ExamDTO } from '../shared/models/exam.model';
 })
 export class ExamService {
 
-  private apiUrl = 'https://exambackend-production.up.railway.app/api/exams';
+  private apiUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/exams';
 
   constructor(private http: HttpClient) { }
 
