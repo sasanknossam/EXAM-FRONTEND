@@ -7,9 +7,9 @@ import { SeatingArrangementDTO } from '../shared/models/SeatingArrangementDTO';
   providedIn: 'root'
 })
 export class SeatingService {
-  private baseUrl = 'https://exambackend-production.up.railway.app/api/seating-arrangements';
-  private roomBaseUrl = 'https://exambackend-production.up.railway.app/api/rooms';
-  private examBaseUrl = 'https://exambackend-production.up.railway.app/api/exams';
+  private baseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb..app/api/seating-arrangements';
+  private roomBaseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/rooms';
+  private examBaseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/exams';
   // Base URL for all seating-related API requests
 
   constructor(private http: HttpClient) {}
