@@ -7,7 +7,7 @@ import { SeatingArrangementDTO } from '../shared/models/SeatingArrangementDTO';
   providedIn: 'root'
 })
 export class SeatingService {
-  private baseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb..app/api/seating-arrangements';
+  private baseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/seating-arrangements';
   private roomBaseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/rooms';
   private examBaseUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/exams';
   // Base URL for all seating-related API requests
