@@ -7,7 +7,7 @@ import { Room } from '../shared/models/room.model';
   providedIn: 'root'
 })
 export class RoomService {
-  private apiUrl = 'https://mild-sile-sasanknossam-1168063f.koyeb.app/api/rooms';
+  private apiUrl = 'mild-sile-sasanknossam-1168063f.koyeb.app/api/rooms';
 
   constructor(private http: HttpClient) { }
 
